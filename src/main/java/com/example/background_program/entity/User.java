@@ -1,21 +1,78 @@
 package com.example.background_program.entity;
 
-public class User {
-    private int id;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
+import java.io.Serializable;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * <p>
+ * 
+ * </p>
+ *
+ * @author jobob
+ * @since 2022-11-16
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+public class User implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 主键
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
+
+    /**
+     * 账号
+     */
     private String no;
+
+    /**
+     * 名字
+     */
     private String name;
+
+    /**
+     * 密码
+     */
     private String password;
-    private int age;
-    private int sex;
+
+    /**
+     * 年龄
+     */
+    private Integer age;
+
+    /**
+     * 性别
+     */
+    private Integer sex;
+
+    /**
+     * 电话
+     */
     private String phone;
-    private int role_id;
+
+    /**
+     * 角色 0超级管理员，1管理员，2普通账号
+     */
+    private Integer roleId;
+
+    /**
+     * 是否有效，y有效，其他无效
+     */
+    @TableField("isValid")
     private String isvalid;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,19 +100,19 @@ public class User {
         this.password = password;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public int getSex() {
+    public Integer getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 
@@ -67,12 +124,12 @@ public class User {
         this.phone = phone;
     }
 
-    public int getRole_id() {
-        return role_id;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(int role_id) {
-        this.role_id = role_id;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getIsvalid() {
