@@ -2,11 +2,15 @@ package com.example.background_program.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.background_program.common.QueryPageParam;
 import com.example.background_program.entity.User;
 import com.example.background_program.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -53,7 +57,22 @@ public class UserController {
         lambdaQueryWrapper.like(User::getName,user.getName());
         return iUserService.list(lambdaQueryWrapper);
     }
+    @PostMapping("/listPage")
+    public List<User> listPage(@RequestBody QueryPageParam pageParam){
+        HashMap param = pageParam.getParam();
+        String name = (String) param.get("name");
+        System.out.println("param="+param.get("name"));
 
+        Page<User> page = new Page();
+        page.setCurrent(pageParam.getPageNum());
+        page.setSize(pageParam.getPageSize());
 
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper();
+        lambdaQueryWrapper.like(User::getName,name);
 
+        IPage result= iUserService.page(page,lambdaQueryWrapper);
+
+        System.out.println(result.getTotal());
+        return result.getRecords();
+    }
 }
