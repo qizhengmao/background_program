@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.background_program.common.QueryPageParam;
+import com.example.background_program.common.Result;
 import com.example.background_program.entity.User;
 import com.example.background_program.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,11 +69,46 @@ public class UserController {
         page.setSize(pageParam.getPageSize());
 
         LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper();
-        lambdaQueryWrapper.like(User::getName,name);
-
         IPage result= iUserService.page(page,lambdaQueryWrapper);
 
         System.out.println(result.getTotal());
         return result.getRecords();
+    }
+    @PostMapping("/listPageC")
+    public List<User> listPageC(@RequestBody QueryPageParam pageParam){
+        HashMap param = pageParam.getParam();
+        String name = (String) param.get("name");
+
+        Page<User> page = new Page();
+        page.setCurrent(pageParam.getPageNum());
+        page.setSize(pageParam.getPageSize());
+
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper();
+        lambdaQueryWrapper.like(User::getName,name);
+        //IPage result= iUserService.pageC(page);
+        IPage result= iUserService.pageCC(page,lambdaQueryWrapper);
+
+
+
+        System.out.println(result.getTotal());
+        return result.getRecords();
+    }
+    @PostMapping("/listPageC1")
+    public Result listPageC1(@RequestBody QueryPageParam pageParam) {
+        HashMap param = pageParam.getParam();
+        String name = (String) param.get("name");
+
+        Page<User> page = new Page();
+        page.setCurrent(pageParam.getPageNum());
+        page.setSize(pageParam.getPageSize());
+
+        LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper();
+        lambdaQueryWrapper.like(User::getName, name);
+        //IPage result= iUserService.pageC(page);
+        IPage result = iUserService.pageCC(page, lambdaQueryWrapper);
+
+
+        System.out.println(result.getTotal());
+        return Result.suc(result.getRecords(), result.getTotal());
     }
 }
