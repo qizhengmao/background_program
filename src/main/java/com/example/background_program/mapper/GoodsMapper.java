@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.background_program.entity.Goods;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.background_program.entity.Goodstype;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

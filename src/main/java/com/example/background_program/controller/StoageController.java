@@ -7,11 +7,8 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.background_program.common.QueryPageParam;
 import com.example.background_program.common.Result;
-import com.example.background_program.entity.Menu;
 import com.example.background_program.entity.Stoage;
-import com.example.background_program.entity.User;
 import com.example.background_program.service.IStoageService;
-import com.example.background_program.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

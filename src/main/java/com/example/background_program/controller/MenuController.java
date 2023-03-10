@@ -2,7 +2,6 @@ package com.example.background_program.controller;
 import com.example.background_program.common.Result;
 import com.example.background_program.entity.Menu;
 import com.example.background_program.service.IMenuService;
-import com.example.background_program.service.IRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

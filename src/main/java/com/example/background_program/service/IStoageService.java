@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.background_program.entity.Stoage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.background_program.entity.User;
 
 /**
  * <p>
